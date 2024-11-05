@@ -310,6 +310,7 @@ extern int32_t hbn_isp_get_awb_statistics(hbn_vnode_handle_t vnode_fd, hbn_isp_a
 extern int32_t hbn_isp_get_af_statistics(hbn_vnode_handle_t vnode_fd, hbn_isp_af_statistics_t *p_data);
 extern int32_t hbn_isp_set_exposure_table(hbn_vnode_handle_t vnode_fd, hbn_isp_exposure_table_t *p_attr);
 extern int32_t hbn_isp_get_exposure_table(hbn_vnode_handle_t vnode_fd, hbn_isp_exposure_table_t *p_attr);
+extern int32_t hbn_isp_get_lines_persecond(hbn_vnode_handle_t vnode_fd, uint32_t *lines);
 
 #ifdef __cplusplus
 }

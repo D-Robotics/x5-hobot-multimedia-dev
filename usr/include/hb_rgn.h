@@ -44,9 +44,6 @@ extern "C" {
 #define POLYGON_MAX_SIDE 10
 #define CHANNEL_NUM_MAX 6
 
-#define RGN_GROUP_INIT {{-1}, {-1}, {-1}, {-1}, {-1}, {-1}, {-1}, {-1}}
-#define NOT_CHECK 0xFFFF
-
 typedef int32_t hbn_rgn_handle_t;	/* region handle */
 typedef int32_t hbn_rgn_handle_group_t;	/* region group handle */
 
@@ -153,13 +150,6 @@ typedef struct hbn_rgn_attr_s {
 	hbn_rgn_mosaic_t mosaic_chn;		/* mosaic region attribute */
 } hbn_rgn_attr_t;
 
-/* canvas info */
-typedef struct hbn_rgn_canvas_info_s {
-	hbn_rgn_size_t size;			/* size of canvas */
-	hbn_rgn_pixel_format_t pixel_fmt;	/* pixel format of canvas */
-	void *paddr;				/* address of canvas */
-} hbn_rgn_canvas_t;
-
 /* channel display attribute */
 typedef struct hbn_rgn_chn_attr_s {
 	bool show;			/* whether region display */
@@ -210,21 +200,6 @@ typedef struct hbn_rgn_sta_attr_s {
 	uint16_t height;
 } hbn_rgn_sta_t;
 
-#define rgn_input_id_check(handle, vnode, chnid) do {\
-	if ((handle) != NOT_CHECK && ((handle) >= RGN_HANDLE_MAX || (handle) < 0)) {\
-		vpf_err("handle: %d error, out of range [0, %d)\n", (handle), RGN_HANDLE_MAX);\
-		return -HBN_STATUS_VSE_ILLEGAL_ATTR;\
-	}\
-	if (!(vnode)) {\
-		vpf_err("cannot find corresponding vnode\n");\
-		return -HBN_STATUS_VSE_INVALID_PARAMETER;\
-	}\
-	if ((chnid) != NOT_CHECK && ((chnid) >= CHANNEL_NUM_MAX || (chnid) < 0)) {\
-		vpf_err("channel id: %d out of range [0, %d)\n", chnid, CHANNEL_NUM_MAX);\
-		return -HBN_STATUS_VSE_INVALID_PARAMETER;\
-	}\
-	} while(0)
-
 int32_t hbn_rgn_create(hbn_rgn_handle_t handle, const hbn_rgn_attr_t *region);
 int32_t hbn_rgn_destroy(hbn_rgn_handle_t handle);
 int32_t hbn_rgn_getattr(hbn_rgn_handle_t handle, hbn_rgn_attr_t *region);
@@ -239,41 +214,11 @@ int32_t hbn_rgn_get_displayattr(hbn_rgn_handle_t handle, hbn_vnode_handle_t vnod
 				int32_t chnid, hbn_rgn_chn_attr_t *rgn_chn);
 int32_t hbn_rgn_draw_word(const hbn_rgn_draw_word_t *draw_word);
 int32_t hbn_rgn_draw_line(const hbn_rgn_draw_line_t *draw_line);
+int32_t hbn_rgn_draw_line_array(const hbn_rgn_draw_line_t draw_lines[], uint32_t array_size);
 int32_t hbn_rgn_set_colormap(uint32_t color_map[16]);
 int32_t hbn_rgn_set_sta(hbn_vnode_handle_t vnode_fd, int32_t chnid,
 			uint8_t sta_level[3], hbn_rgn_sta_t sta_attr[8]);
 int32_t hbn_rgn_get_sta(hbn_vnode_handle_t vnode_fd, int32_t chnid, uint16_t sta_value[8][4]);
-
-
-// int32_t hbn_rgn_get_canvas_info(hbn_rgn_handle_t handle, hbn_rgn_canvas_t *canvas_info);
-// int32_t hbn_rgn_update_canvas(hbn_rgn_handle_t handle);
-
-
-
-// /*batch draw lines to specified address*/
-// int32_t HB_RGN_DrawLineArray(hbn_rgn_handle_t hHandle,
-// 			const hbn_rgn_draw_line_t astRgnDrawLine[],
-// 			uint32_t u32ArraySize);
-
-/*set some region handles to a group*/
-// int32_t HB_RGN_BatchBegin(hbn_rgn_handle_group_t *pu32Group, uint32_t u32Num, const hbn_rgn_handle_t handle[]);
-
-// /*update all regions in the group*/
-// int32_t HB_RGN_BatchEnd(hbn_rgn_handle_group_t u32Group);
-
-/*attach region to a yuv buffer*/
-// int32_t HB_RGN_AddToYUV(hbn_rgn_handle_t handle, hbn_vnode_image_t *vio_buffer,
-// 			const hbn_rgn_chn_attr_t *rgn_chn);
-
-// int32_t HB_RGN_AddToYUVEx(hbn_rgn_handle_t handle, hbn_vnode_image_t *vio_buffer,
-// 			const hbn_rgn_chn_attr_t *rgn_chn);
-
-// /*set display level of region*/
-// int32_t HB_RGN_SetDisplayLevel(hbn_rgn_handle_t handle, hbn_vnode_handle_t vnode_fd,
-// 				int32_t chnid, uint32_t osd_level);
-
-// /*set background transparent of yuv420 pixel format region*/
-// int32_t HB_RGN_SetYuvBgtrans(hbn_rgn_handle_t handle, uint8_t enable, uint32_t key_color);
 
 #ifdef __cplusplus
 }
