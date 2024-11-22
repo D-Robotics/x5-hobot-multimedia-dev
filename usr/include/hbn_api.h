@@ -46,6 +46,7 @@ typedef int64_t hbn_vflow_handle_t;
 typedef struct hbn_frame_info_s {
 	uint32_t frame_id;
 	uint64_t timestamps;
+	uint64_t sys_timestamps;
 	struct timeval tv;
 	struct timeval trig_tv;
 	uint32_t frame_done;

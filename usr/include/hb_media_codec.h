@@ -2228,6 +2228,8 @@ typedef struct _mc_h264_enc_config {
  * User add profile information to SPS by setting the profile register.
  * However, if you set 0 or have done nothing to the register, VPU
  * automatically encodes a profile by using the bit depth of source picture.
+ * It's recommended to set to default. Wrong configuration may cause errors
+ * when bitstream players do decoding.
  *
  * - Note: It's unchangable parameters in the same sequence.
  * - Encoding: Unsupport.
@@ -2239,6 +2241,8 @@ typedef struct _mc_h264_enc_config {
 /**
  * H.264/AVC level_idc in SPS. Please refer to H.264 document.
  * If 'level=0', FW calculates level instead of host setting value.
+ * It's recommended to set to default. Wrong configuration may cause errors
+ * when bitstream players do decoding.
  *
  * - Note: It's unchangable parameters in the same sequence.
  * - Encoding: Support.
