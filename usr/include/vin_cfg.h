@@ -1,17 +1,3 @@
-// Copyright (c) 2024，D-Robotics.
-//
-// Licensed under the Apache License, Version 2.0 (the "License");
-// you may not use this file except in compliance with the License.
-// You may obtain a copy of the License at
-//
-//     http://www.apache.org/licenses/LICENSE-2.0
-//
-// Unless required by applicable law or agreed to in writing, software
-// distributed under the License is distributed on an "AS IS" BASIS,
-// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-// See the License for the specific language governing permissions and
-// limitations under the License.
-
 /***************************************************************************
  *                      COPYRIGHT NOTICE
  *             Copyright(C) 2024, D-Robotics Co., Ltd.
@@ -379,8 +365,17 @@ typedef struct dynamic_fps_s{
         uint32_t hw_extract_n;
 }dynamic_fps_t;
 
+enum lpwm_dynamic_enable {
+	LPWM_CHANGE_ATTR,
+	LPWM_ONLY_ENABLE,
+	LPWM_ONLY_DISABLE,
+	LPWM_DYNAMIC_MAX,
+};
+
 typedef struct  lpwm_dynamic_fps_s{
-        uint32_t period;               //帧率改变的时候需要改这几个值
+	uint32_t lpwm_chn;
+	uint32_t enable;
+	uint32_t period;               //帧率改变的时候需要改这几个值
         uint32_t offset;
         uint32_t duty_time;
         uint32_t trigger_source;
@@ -436,17 +431,18 @@ typedef struct vin_rawds_attr_s {
 	uint32_t	rawds_mode;
 } vin_rawds_attr_t; //
 
-struct vpm_commn_roi_data_desc {
-	uint32_t roi_x; // Starting point coordinate X
-	uint32_t roi_y; // Starting point coordinate Y
-	uint32_t roi_width; // Width of roi output
-	uint32_t roi_height; // High roi output
-};
+typedef struct vin_pdaf_attr_s {
+	uint32_t pdaf_en;
+	uint32_t pd_ipi_channel;
+	uint32_t pd_width;
+	uint32_t pd_height;
+	uint32_t pd_format;
+} vin_pdaf_attr_t;
 
 typedef enum vin_ochn_attr_type_s {
 	VIN_BASIC_ATTR,
 	VIN_EMB_ATTR,
-	VIN_ROI_ATTR,
+	VIN_PDAF_ATTR,
 	VIN_RAWDS_ATTR,
 	VIN_DYNAMIC_INVALID,
 } vin_ochn_attr_type_e;
@@ -463,19 +459,19 @@ typedef enum _vin_ochn_type_e {
 	VIN_ONLINE,
 	VIN_FRAME_TOGHER,
 	VIN_EMB,
-	VIN_ROI,
+	VIN_PDAF,
 	VIN_TYPE_INVALID,
 } vin_ochn_type_e;
 
 typedef struct vin_ochn_attr_s{
 	uint32_t		ddr_en;
-	uint32_t		roi_en;			// roi使能  ，根据type来决定是否使能
+	uint32_t		pdaf_en;			// pdaf使能  ，根据type来决定是否使能
 	uint32_t		emb_en;			// 使能emb
 	uint32_t		rawds_en;		// rawds功能使能
 	vin_ochn_attr_type_e	ochn_attr_type;		// 基本属性类型
 	vin_basic_attr_t	vin_basic_attr;		// 基本属性,必须要配置的
 	vin_rawds_attr_t	rawds_attr;		// rawds属性
-	struct vpm_commn_roi_data_desc	roi_attr;		// ROI属性 公共定义
+	vin_pdaf_attr_t     pdaf_attr;
 	vin_emb_attr_t		emb_attr;		// emb属性
 }vin_ochn_attr_t;
 

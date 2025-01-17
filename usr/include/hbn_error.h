@@ -1,17 +1,3 @@
-// Copyright (c) 2024，D-Robotics.
-//
-// Licensed under the Apache License, Version 2.0 (the "License");
-// you may not use this file except in compliance with the License.
-// You may obtain a copy of the License at
-//
-//     http://www.apache.org/licenses/LICENSE-2.0
-//
-// Unless required by applicable law or agreed to in writing, software
-// distributed under the License is distributed on an "AS IS" BASIS,
-// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-// See the License for the specific language governing permissions and
-// limitations under the License.
-
 /***************************************************************************
  *                      COPYRIGHT NOTICE
  *             Copyright(C) 2024, D-Robotics Co., Ltd.
@@ -151,6 +137,7 @@ extern "C" {
 #define HBN_STATUS_ISP_MEM_FREE_FAIL COMBINE_ERRCODE(HB_ISP, HBN_STATUS_MEM_FREE_FAIL) //0x0C0037
 #define HBN_STATUS_ISP_SYSFS_OPEN_FAIL COMBINE_ERRCODE(HB_ISP, HBN_STATUS_SYSFS_OPEN_FAIL) //0x0C0038
 #define HBN_STATUS_ISP_2A_ERROR COMBINE_ERRCODE(HB_ISP, HBN_STATUS_ERR_UNKNOW) //0x0C0080
+#define HBN_STATUS_ISP_ERROR COMBINE_ERRCODE(HB_ISP, HBN_STATUS_ERR_UNKNOW) //0x0C0080
 #define HBN_STATUS_ISP_OPEN_ICHN_FAIL COMBINE_ERRCODE(HB_ISP, HBN_STATUS_OPEN_ICHN_FAIL)
 #define HBN_STATUS_ISP_OPEN_OCHN_FAIL COMBINE_ERRCODE(HB_ISP, HBN_STATUS_OPEN_OCHN_FAIL)
 #define HBN_STATUS_ISP_INVALID_NODE COMBINE_ERRCODE(HB_ISP, HBN_STATUS_INVALID_NODE) //0xB0001
