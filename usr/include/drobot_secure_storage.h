@@ -58,5 +58,11 @@ int64_t drobot_st_file_rename(const char *old_name, const char *new_name, uint32
 }
 #endif
 
+/**
+ * @description: Get both the git commit hash and version of libsecure_storage.
+ * @return: A pointer to a static string containing both git commit hash and lib version.
+ */
+extern const char* hb_libsecure_storage_get_version_info(void);
+
 #endif  //HB_ST_KEY_MANAGER_H
 

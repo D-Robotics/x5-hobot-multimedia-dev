@@ -34,4 +34,10 @@ typedef struct codec_ichn_attr_s {
 	uint32_t  height;
 } codec_ichn_attr_t;
 
+/**
+ * @description: Get both the git commit hash and version of libvpf.
+ * @return: A pointer to a static string containing both git commit hash and lib version.
+ */
+extern const char* hb_libvpf_get_version_info(void);
+
 #endif // _VIO_CODEC_NODE_CFG_H_

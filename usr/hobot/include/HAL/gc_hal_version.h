@@ -24,6 +24,14 @@
 
 #define gcvVERSION_STRING    "6.4.14.9.674707"
 
+#define STR_HELPER(x) #x
+#define STR(x) STR_HELPER(x)
+#ifndef VERSION
+#define VERSION  STR(gcvVERSION_MAJOR) "." STR(gcvVERSION_MINOR)"." STR(gcvVERSION_PATCH)
+#endif
+
+extern const char* gc8000l_get_version_info(void);
+
 #ifndef gcvVERSION_COMMIT
 #define gcvVERSION_COMMIT "unknown"
 #endif

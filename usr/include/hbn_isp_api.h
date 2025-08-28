@@ -24,6 +24,8 @@ extern "C" {
 #include "./isp_feature/isp_dpcc.h"
 #include "./isp_feature/isp_bypass.h"
 #include "./isp_feature/isp_pattern.h"
+#include "./isp_feature/isp_calib.h"
+#include "./isp_feature/isp_af.h"
 
 /* common define */
 
@@ -134,14 +136,7 @@ typedef enum enum_isp_awb_version {
 	HBN_ISP_WB_V1,
 } hbn_isp_awb_version_e;
 
-/* AWB gain parameter */
-typedef struct hbn_isp_awb_gain_s {
-	float rgain;
-	float grgain;
-	float gbgain;
-	float bgain;
-} hbn_isp_awb_gain_t;
-
+/* AWB parameter */
 typedef struct hbn_isp_awb_auto_attr_s {
 	uint32_t use_damping;	// 启用收敛
 	uint32_t use_manual_damp_coff;	// 使用固定的收敛系数
@@ -445,7 +440,6 @@ extern int32_t hbn_isp_set_hdr_exposure_attr(hbn_vnode_handle_t vnode_fd, hbn_is
 extern int32_t hbn_isp_get_hdr_exposure_attr(hbn_vnode_handle_t vnode_fd, hbn_isp_hdr_exposure_attr_t *p_attr);
 extern int32_t hbn_isp_set_awb_attr(hbn_vnode_handle_t vnode_fd, hbn_isp_awb_attr_t *p_attr);
 extern int32_t hbn_isp_get_awb_attr(hbn_vnode_handle_t vnode_fd, hbn_isp_awb_attr_t *p_attr);
-extern int32_t hbn_isp_get_awb_gain_by_temper(hbn_vnode_handle_t vnode_fd, uint32_t temper, hbn_isp_awb_gain_t *p_awb_gain);
 extern int32_t hbn_isp_set_color_process_attr(hbn_vnode_handle_t vnode_fd, hbn_isp_color_process_attr_t *p_attr);
 extern int32_t hbn_isp_get_color_process_attr(hbn_vnode_handle_t vnode_fd, hbn_isp_color_process_attr_t *p_attr);
 extern int32_t hbn_isp_set_ae_zone_weight_attr(hbn_vnode_handle_t vnode_fd, hbn_isp_ae_zone_weight_attr_t *p_attr);
@@ -483,6 +477,14 @@ extern int32_t hbn_isp_get_cproc_attr(hbn_vnode_handle_t vnode_fd, hbn_isp_cproc
 extern int32_t hbn_isp_get_dpcc_attr(hbn_vnode_handle_t vnode_fd, hbn_isp_dpcc_attr_t *p_attr);
 extern int32_t hbn_isp_set_dpcc_attr(hbn_vnode_handle_t vnode_fd, hbn_isp_dpcc_attr_t *p_attr);
 extern int32_t hbn_isp_set_pattern_attr(hbn_vnode_handle_t vnode_fd, hbn_isp_pattern_t *p_attr);
+extern int32_t hbn_isp_get_awb_calib_data(hbn_vnode_handle_t vnode_fd, hbn_isp_awb_calib_t *p_attr);
+extern int32_t hbn_isp_set_awb_calib_data(hbn_vnode_handle_t vnode_fd, hbn_isp_awb_calib_t *p_attr);
+extern int32_t hbn_isp_get_lsc_calib_data(hbn_vnode_handle_t vnode_fd, hbn_isp_lsc_calib_t *p_attr);
+extern int32_t hbn_isp_set_lsc_calib_data(hbn_vnode_handle_t vnode_fd, hbn_isp_lsc_calib_t *p_attr);
+extern int32_t hbn_isp_get_afm_attr(hbn_vnode_handle_t vnode_fd, hbn_isp_afm_attr_t *p_attr);
+extern int32_t hbn_isp_set_afm_attr(hbn_vnode_handle_t vnode_fd, hbn_isp_afm_attr_t *p_attr);
+extern int32_t hbn_isp_cal_gain_by_temp(hbn_vnode_handle_t vnode_fd, uint32_t color_temp,
+				int32_t shift, hbn_isp_awb_gain_t *p_attr);
 
 #ifdef __cplusplus
 }

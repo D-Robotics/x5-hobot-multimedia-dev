@@ -27,6 +27,7 @@ typedef struct hbn_ccm_manual_attr_s {
  *****************************************************************************/
 typedef struct hbn_isp_ccm_attr_s {
     hbn_isp_ccm_manual_attr_t manual_attr;   /**< CCM manual configuration*/
+    uint32_t configMode;
 } hbn_isp_ccm_attr_t;
 
 

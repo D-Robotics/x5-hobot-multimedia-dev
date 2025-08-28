@@ -153,6 +153,11 @@ uint64_t hb_mem_pc_phyaddr(hb_mem_pc_handle_t handle);
  */
 uint64_t hb_mem_pc_virtaddr(hb_mem_pc_handle_t handle);
 
+/**
+ * @description: Get both the git commit hash and version of libhbmem.
+ * @return: A pointer to a static string containing both git commit hash and lib version.
+ */
+extern const char* hb_libhbmem_get_version_info(void);
 
 #ifdef __cplusplus
 }
