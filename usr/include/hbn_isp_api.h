@@ -432,6 +432,14 @@ typedef struct hbn_isp_3dnr_attr_s {
 	hbn_isp_3dnr_auto_attr_t auto_attr;	/**< 3DNR SNR configuration */
 } hbn_isp_3dnr_attr_t;
 
+typedef struct hbn_isp_sensor_param_s {
+	uint32_t lines_per_second;
+	uint32_t again_max;
+	uint32_t dgain_max;
+	uint32_t exp_time_max;
+	uint32_t exp_time_min;
+} hbn_isp_sensor_param_t;
+
 extern int32_t hbn_isp_set_module_control(hbn_vnode_handle_t vnode_fd, hbn_isp_module_ctrl_t *p_ctrl);
 extern int32_t hbn_isp_get_module_control(hbn_vnode_handle_t vnode_fd, hbn_isp_module_ctrl_t *p_ctrl);
 extern int32_t hbn_isp_set_exposure_attr(hbn_vnode_handle_t vnode_fd, hbn_isp_exposure_attr_t *p_attr);
@@ -485,7 +493,7 @@ extern int32_t hbn_isp_get_afm_attr(hbn_vnode_handle_t vnode_fd, hbn_isp_afm_att
 extern int32_t hbn_isp_set_afm_attr(hbn_vnode_handle_t vnode_fd, hbn_isp_afm_attr_t *p_attr);
 extern int32_t hbn_isp_cal_gain_by_temp(hbn_vnode_handle_t vnode_fd, uint32_t color_temp,
 				int32_t shift, hbn_isp_awb_gain_t *p_attr);
-
+extern int32_t hbn_isp_get_sensor_attr(hbn_vnode_handle_t vnode_fd, hbn_isp_sensor_param_t *p_sensor_param);
 #ifdef __cplusplus
 }
 #endif
