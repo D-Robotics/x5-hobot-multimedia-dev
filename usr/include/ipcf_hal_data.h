@@ -94,6 +94,12 @@ struct config_info_t{
 	uint32_t fifo_type;/**< fifo type*/
 };
 
+/**
+ * @description: Get both the git commit hash and version of libhbipcfhal.
+ * @return: A pointer to a static string containing both git commit hash and lib version.
+ */
+extern const char* hb_libhbipcfhal_get_version_info(void);
+
 /******************************************************************************/
 /*------------------------------Global variables------------------------------*/
 /******************************************************************************/

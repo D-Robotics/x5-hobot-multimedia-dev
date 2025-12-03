@@ -16,7 +16,8 @@ enum isp_chn_type {
 };
 
 enum isp_ochn_channel_type_e {
-	ISP_MAIN_FRAME,
+	ISP_MAIN_FRAME = 0,
+	ISP_MAIN_RAW_FRAME = 2,
 	ISP_CHN_MAX,
 };
 
@@ -70,6 +71,7 @@ typedef struct isp_cfg_s {
 	isp_attr_t isp_attr;
 	isp_ichn_attr_t ichn_attr;
 	isp_ochn_attr_t ochn_attr;
+	isp_ochn_attr_t ochn_raw_attr;
 } isp_cfg_t;
 
 int32_t isp_node_parser_config(const void *root, isp_cfg_t *cfg);

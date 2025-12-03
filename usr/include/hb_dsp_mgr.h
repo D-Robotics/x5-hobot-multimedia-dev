@@ -426,6 +426,12 @@ int32_t hb_dsp_mmu_map(int32_t dsp_id, uint64_t va, uint64_t size, uint64_t *dsp
  */
 int32_t hb_dsp_mmu_unmap(int32_t dsp_id, uint64_t va);
 
+/**
+ * @description: Get both the git commit hash and version of libdsp.
+ * @return: A pointer to a static string containing both git commit hash and lib version.
+ */
+extern const char* hb_libdsp_get_version_info(void);
+
 #ifdef __cplusplus
 }
 #endif /* __cplusplus */

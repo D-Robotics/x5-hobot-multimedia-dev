@@ -490,6 +490,12 @@ int32_t otaVerifySecImg(ota_sec_info_t *sec_info);
  */
 void otaClearFlags(void);
 
+/**
+ * @description: Get both the git commit hash and version of libupdate.
+ * @return: A pointer to a static string containing both git commit hash and lib version.
+ */
+extern const char* hb_libupdate_get_version_info(void);
+
 #ifdef __cplusplus
 }
 #endif /* __cplusplus */

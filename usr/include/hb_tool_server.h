@@ -227,6 +227,12 @@ typedef struct _af_stats_info_s {
     hb_tool_zone_attr_t zone;
 } _af_stats_info_t;
 
+/**
+ * @description: Get both the git commit hash and version of libhbplayer.
+ * @return: A pointer to a static string containing both git commit hash and lib version.
+ */
+extern const char* hb_libhbplayer_get_version_info(void);
+
 #ifdef __cplusplus
     }
 #endif
