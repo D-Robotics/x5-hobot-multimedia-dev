@@ -28,6 +28,19 @@ typedef struct hbn_isp_awb_preference_attr_s {
 	hbn_isp_awb_gray_preference_attr_t gray_preference[HBN_ISP_ILLUPROFILE_NUM];	/**< Gray scale preference */
 } hbn_isp_awb_preference_attr_t;
 
+typedef struct hbn_isp_awb_gain_s {
+	float	rgain;
+	float	grgain;
+	float	gbgain;
+	float	bgain;
+} hbn_isp_awb_gain_t;
+
+typedef struct hbn_isp_awb_ctgain_s {
+	uint16_t		ct;
+	int16_t			shift;
+	hbn_isp_awb_gain_t	gain;
+} hbn_isp_awb_ctgain_t;
+
 #ifdef __cplusplus
 }
 #endif

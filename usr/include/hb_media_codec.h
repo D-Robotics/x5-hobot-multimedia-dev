@@ -9492,6 +9492,12 @@ extern hb_s32 hb_mm_mc_unregister_audio_decoder(hb_s32 handle);
 extern hb_s32 hb_mm_mc_set_status(media_codec_context_t *context,
 				mc_user_status_t *status);
 
+/**
+ * @description: Get both the git commit hash and version of libmultimedia.
+ * @return: A pointer to a static string containing both git commit hash and lib version.
+ */
+extern const char* hb_libmultimedia_get_version_info(void);
+
 #ifdef __cplusplus
 }
 #endif /* __cplusplus */

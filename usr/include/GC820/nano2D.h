@@ -199,6 +199,8 @@ n2d_error_t ExaAllocate(
 
 n2d_error_t n2d_get_commit(char *commit);
 
+extern const char* n2d_get_version_info(void);
+
 #ifdef __cplusplus
 }
 #endif
