@@ -28,6 +28,7 @@ typedef struct n2d_config {
 	uint32_t input_width[N2D_IN_MAX];  //n2d input width resolution
 	uint32_t input_height[N2D_IN_MAX]; //n2d input height resolution
 	uint32_t input_stride[N2D_IN_MAX]; //n2d input stride (pixel)
+	uint32_t input_format;             //n2d input format
 	uint32_t output_width;             //n2d output width resolution
 	uint32_t output_height;            //n2d output height resolution
 	uint32_t output_stride;            //n2d output stride (pixel)

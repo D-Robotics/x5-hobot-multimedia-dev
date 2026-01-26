@@ -26,6 +26,9 @@ extern "C" {
 #include "./isp_feature/isp_pattern.h"
 #include "./isp_feature/isp_calib.h"
 #include "./isp_feature/isp_af.h"
+#include "./isp_feature/isp_hist.h"
+#include "./isp_feature/isp_rgbir.h"
+#include "isp_common.h"
 
 /* common define */
 
@@ -41,13 +44,6 @@ typedef struct isp_zone_weight_s {
 	uint32_t w;
 	float weight;
 } hbn_isp_zone_weight_t;
-
-typedef struct hbn_windows_s {
-	uint32_t h_offset;	/**< Horizontal start offset */
-	uint32_t v_offset;	/**< Vertical start offset */
-	uint32_t width;		/**< Width */
-	uint32_t height;	/**< Height */
-} hbn_windows_t;
 
 typedef struct hbn_isp_roi_s {
 	hbn_windows_t window;	/**< ROI window */
@@ -494,6 +490,19 @@ extern int32_t hbn_isp_set_afm_attr(hbn_vnode_handle_t vnode_fd, hbn_isp_afm_att
 extern int32_t hbn_isp_cal_gain_by_temp(hbn_vnode_handle_t vnode_fd, uint32_t color_temp,
 				int32_t shift, hbn_isp_awb_gain_t *p_attr);
 extern int32_t hbn_isp_get_sensor_attr(hbn_vnode_handle_t vnode_fd, hbn_isp_sensor_param_t *p_sensor_param);
+extern int32_t hbn_isp_set_hist_attr(hbn_vnode_handle_t vnode_fd, hbn_isp_hist_t *p_attr);
+extern int32_t hbn_isp_get_hist_attr(hbn_vnode_handle_t vnode_fd, hbn_isp_hist_t *p_attr);
+extern int32_t hbn_isp_get_hist_sta(hbn_vnode_handle_t vnode_fd, hbn_isp_hist_sta_t *p_attr);
+extern int32_t hbn_isp_get_af_attr(hbn_vnode_handle_t vnode_fd, hbn_isp_af_attr_t *p_attr);
+extern int32_t hbn_isp_set_af_attr(hbn_vnode_handle_t vnode_fd, hbn_isp_af_attr_t *p_attr);
+extern int32_t hbn_isp_set_rgbir_attr(hbn_vnode_handle_t vnode_fd, hbn_isp_rgbir_attr_t *p_attr);
+extern int32_t hbn_isp_get_rgbir_attr(hbn_vnode_handle_t vnode_fd, hbn_isp_rgbir_attr_t *p_attr);
+extern int32_t hbn_isp_get_afmv1_attr(hbn_vnode_handle_t vnode_fd, hbn_isp_afmv1_attr_t *p_attr);
+extern int32_t hbn_isp_set_afmv1_attr(hbn_vnode_handle_t vnode_fd, hbn_isp_afmv1_attr_t *p_attr);
+extern int32_t hbn_isp_get_afmv1_statistics(hbn_vnode_handle_t vnode_fd, hbn_isp_afmv1_statistics_t *p_attr);
+
+
+
 #ifdef __cplusplus
 }
 #endif
